@@ -9,6 +9,11 @@
 
 namespace Application;
 
+use Application\Model\Client;
+use Application\Model\ClientTable;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
+
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
@@ -34,6 +39,25 @@ class Module
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
+            ),
+        );
+    }
+
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'Application\Model\ClientTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ClientTableGateway');
+                    $table = new ClientTable($tableGateway);
+                    return $table;
+                },
+                'ClientTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Client());
+                    return new TableGateway('client', $dbAdapter, null, $resultSetPrototype);
+                },
             ),
         );
     }
