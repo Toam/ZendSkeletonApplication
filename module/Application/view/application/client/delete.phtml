@@ -9,7 +9,8 @@ $this->headTitle($title);
     <?php echo $this->escapeHtml($client->last_name); ?>'?
 </p>
 <?php
-$url = $this->url('client', array(
+$url = $this->url('application/default', array(
+	'controller'=> 'client',
     'action' => 'delete',
     'id'     => $this->id,
 ));

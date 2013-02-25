@@ -39,19 +39,17 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route'    => '/[:controller[/:action[/:id]]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 ),
                             'defaults' => array(
-                                'controller' => 'client',
-                                'action'     => 'index',
                                 ),
                             ),
                         ),
                     ),
-                ),
+                )
 ),
 ),
 'service_manager' => array(
@@ -72,7 +70,7 @@ return array(
 'controllers' => array(
     'invokables' => array(
         'Application\Controller\Index' => 'Application\Controller\IndexController',
-        'Application\Controller\ClientController' => 'Application\Controller\ClientController'
+        'Application\Controller\Client' => 'Application\Controller\ClientController'
         ),
     ),
 'view_manager' => array(

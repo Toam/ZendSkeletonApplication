@@ -4,7 +4,7 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('client', array('action'=>'add'));?>">Add new client</a>
+    <a href="<?php echo $this->url('application/default', array('controller'=> 'client', 'action'=>'add'));?>">Add new client</a>
 </p>
 
 <table class="table">
@@ -18,10 +18,10 @@ $this->headTitle($title);
     <td><?php echo $this->escapeHtml($client->first_name);?></td>
     <td><?php echo $this->escapeHtml($client->last_name);?></td>
     <td>
-        <a href="<?php echo $this->url('client',
-            array('action'=>'edit', 'id' => $client->id));?>">Edit</a>
-        <a href="<?php echo $this->url('client',
-            array('action'=>'delete', 'id' => $client->id));?>">Delete</a>
+        <a href="<?php echo $this->url('application/default',
+            array('controller'=> 'client', 'action'=>'edit', 'id' => $client->id));?>">Edit</a>
+        <a href="<?php echo $this->url('application/default',
+            array('controller'=> 'client', 'action'=>'delete', 'id' => $client->id));?>">Delete</a>
     </td>
 </tr>
 <?php endforeach; ?>

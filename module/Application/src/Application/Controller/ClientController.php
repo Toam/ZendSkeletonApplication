@@ -32,7 +32,7 @@ class ClientController extends AbstractActionController
                 $client->exchangeArray($form->getData());
                 $this->getClientTable()->saveClient($client);
 
-                return $this->redirect()->toRoute('client');
+                return $this->redirect()->toRoute('application/default', array('controller' => 'client'));
             }
         }
         return array('form' => $form);
@@ -42,7 +42,7 @@ class ClientController extends AbstractActionController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('client', array(
+            return $this->redirect()->toRoute('application/default', array('controller' => 'client'), array(
                 'action' => 'add'
             ));
         }
@@ -60,7 +60,7 @@ class ClientController extends AbstractActionController
             if ($form->isValid()) {
                 $this->getClientTable()->saveClient($form->getData());
 
-                return $this->redirect()->toRoute('client');
+                return $this->redirect()->toRoute('application/default', array('controller' => 'client'));
             }
         }
 
@@ -74,7 +74,7 @@ class ClientController extends AbstractActionController
     {
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
-            return $this->redirect()->toRoute('client');
+            return $this->redirect()->toRoute('application/default', array('controller' => 'client'));
         }
 
         $request = $this->getRequest();
@@ -86,7 +86,7 @@ class ClientController extends AbstractActionController
                 $this->getClientTable()->deleteClient($id);
             }
 
-            return $this->redirect()->toRoute('client');
+            return $this->redirect()->toRoute('application/default', array('controller' => 'client'));
         }
 
         return array(

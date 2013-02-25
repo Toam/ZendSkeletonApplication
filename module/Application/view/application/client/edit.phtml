@@ -7,8 +7,9 @@ $this->headTitle($title);
 <?php
 $form = $this->form;
 $form->setAttribute('action', $this->url(
-    'client',
+    'application/default',
     array(
+    	'controller'=> 'client',
         'action' => 'edit',
         'id'     => $this->id,
     )
