@@ -46,7 +46,7 @@ class ClientControllerTest extends PHPUnit_Framework_TestCase
 
     public function testDeleteActionCanBeAccessed()
     {
-        $this->routeMatch->setParam('action', 'delete');
+        $this->routeMatch->setParam('action', 'delete')->setParam('id', '1');
 
         $result   = $this->controller->dispatch($this->request);
         $response = $this->controller->getResponse();
@@ -56,7 +56,7 @@ class ClientControllerTest extends PHPUnit_Framework_TestCase
 
     public function testEditActionCanBeAccessed()
     {
-        $this->routeMatch->setParam('action', 'edit');
+        $this->routeMatch->setParam('action', 'edit')->setParam('id', '1');
 
         $result   = $this->controller->dispatch($this->request);
         $response = $this->controller->getResponse();
