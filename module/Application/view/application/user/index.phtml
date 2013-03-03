@@ -1,0 +1,28 @@
+<?php
+$title = 'Utilisateurs';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('application/default', array('controller'=> 'user', 'action'=>'add'));?>">Ajouter un utilisateur</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Login</th>
+    <th>Adresse email</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($users as $user) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($user->username);?></td>
+    <td><?php echo $this->escapeHtml($user->email);?></td>
+    <td>
+        <a href="<?php echo $this->url('application/default',
+            array('controller'=> 'user', 'action'=>'edit', 'id' => $user->id));?>">Edit</a>
+        <a href="<?php echo $this->url('application/default',
+            array('controller'=> 'user', 'action'=>'delete', 'id' => $user->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

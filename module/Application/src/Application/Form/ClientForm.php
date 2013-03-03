@@ -38,7 +38,7 @@ class ClientForm extends Form
             'name' => 'submit',
             'attributes' => array(
                 'type'  => 'submit',
-                'value' => 'Go',
+                'value' => 'Valider',
                 'id' => 'submitbutton',
             ),
         ));
