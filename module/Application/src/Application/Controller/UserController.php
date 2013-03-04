@@ -40,13 +40,13 @@ class UserController extends AbstractActionController
 
     public function editAction()
     {
-        $id = (int) $this->params()->fromRoute('id', 0);
-        if (!$id) {
+        $user_id = (int) $this->params()->fromRoute('id', 0);
+        if (!$user_id) {
             return $this->redirect()->toRoute('application/default', array('controller' => 'user'), array(
                 'action' => 'add'
             ));
         }
-        $user = $this->getUserTable()->getUser($id);
+        $user = $this->getUserTable()->getUser($user_id);
 
         $form  = new UserForm();
         $form->bind($user);
@@ -65,33 +65,31 @@ class UserController extends AbstractActionController
         }
 
         return array(
-            'id' => $id,
+            'user_id' => $user_id,
             'form' => $form,
         );
     }
 
     public function deleteAction()
     {
-        $id = (int) $this->params()->fromRoute('id', 0);
-        if (!$id) {
+        $user_id = (int) $this->params()->fromRoute('id', 0);
+        if (!$user_id) {
             return $this->redirect()->toRoute('application/default', array('controller' => 'user'));
         }
-
         $request = $this->getRequest();
         if ($request->isPost()) {
             $del = $request->getPost('del', 'Non');
 
             if ($del == 'Oui') {
-                $id = (int) $request->getPost('id');
-                $this->getUserTable()->deleteUser($id);
+                $user_id = (int) $request->getPost('user_id');
+                $this->getUserTable()->deleteUser($user_id);
             }
-
             return $this->redirect()->toRoute('application/default', array('controller' => 'user'));
         }
 
         return array(
-            'id'    => $id,
-            'user' => $this->getUserTable()->getUser($id)
+            'id'    => $user_id,
+            'user' => $this->getUserTable()->getUser($user_id)
         );
     }
 

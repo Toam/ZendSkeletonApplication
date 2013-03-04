@@ -9,13 +9,13 @@ use Zend\InputFilter\InputFilterInterface;
 
 class User{
 
-	public $id;
+	public $user_id;
 	public $username;
 	public $email;
 	protected $inputFilter;
 
 	public function exchangeArray($data){
-		$this->id     = (isset($data['id'])) ? $data['id'] : null;
+		$this->user_id     = (isset($data['user_id'])) ? $data['user_id'] : null;
 		$this->username = (isset($data['username'])) ? $data['username'] : null;
 		$this->email  = (isset($data['email'])) ? $data['email'] : null;
 	}
@@ -32,7 +32,7 @@ class User{
             $factory     = new InputFactory();
 
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'id',
+                'name'     => 'user_id',
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'Int'),

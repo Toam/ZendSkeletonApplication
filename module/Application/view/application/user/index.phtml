@@ -19,9 +19,9 @@ $this->headTitle($title);
     <td><?php echo $this->escapeHtml($user->email);?></td>
     <td>
         <a href="<?php echo $this->url('application/default',
-            array('controller'=> 'user', 'action'=>'edit', 'id' => $user->id));?>">Edit</a>
+            array('controller'=> 'user', 'action'=>'edit', 'id' => $user->user_id));?>">Edit</a>
         <a href="<?php echo $this->url('application/default',
-            array('controller'=> 'user', 'action'=>'delete', 'id' => $user->id));?>">Delete</a>
+            array('controller'=> 'user', 'action'=>'delete', 'id' => $user->user_id));?>">Delete</a>
     </td>
 </tr>
 <?php endforeach; ?>

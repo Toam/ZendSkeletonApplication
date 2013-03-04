@@ -46,7 +46,7 @@ class UserControllerTest extends PHPUnit_Framework_TestCase
 
     public function testDeleteActionCanBeAccessed()
     {
-        $this->routeMatch->setParam('action', 'delete')->setParam('id', '1');
+        $this->routeMatch->setParam('action', 'delete')->setParam('user_id', '1');
 
         $result   = $this->controller->dispatch($this->request);
         $response = $this->controller->getResponse();
@@ -56,7 +56,7 @@ class UserControllerTest extends PHPUnit_Framework_TestCase
 
     public function testEditActionCanBeAccessed()
     {
-        $this->routeMatch->setParam('action', 'edit')->setParam('id', '1');
+        $this->routeMatch->setParam('action', 'edit')->setParam('user_id', '1');
 
         $result   = $this->controller->dispatch($this->request);
         $response = $this->controller->getResponse();

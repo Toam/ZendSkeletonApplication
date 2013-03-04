@@ -10,7 +10,7 @@ class UserTest extends PHPUnit_Framework_TestCase
     {
         $user = new User();
 
-        $this->assertNull($user->id, '"id" should initially be null');
+        $this->assertNull($user->user_id, '"user_id" should initially be null');
         $this->assertNull($user->username, '"username" should initially be null');
         $this->assertNull($user->email, '"email" should initially be null');
     }
@@ -18,13 +18,13 @@ class UserTest extends PHPUnit_Framework_TestCase
     public function testExchangeArraySetsPropertiesCorrectly()
     {
         $user = new User();
-        $data  = array('id'     => 123,
+        $data  = array('user_id'     => 123,
                        'username' => 'NomUtilisateur',
                        'email'  => 'email@adresse.com');
 
         $user->exchangeArray($data);
 
-        $this->assertSame($data['id'], $user->id, '"id" was not set correctly');
+        $this->assertSame($data['user_id'], $user->user_id, '"user_id" was not set correctly');
         $this->assertSame($data['username'], $user->username, '"username" was not set correctly');
         $this->assertSame($data['email'], $user->email, '"email" was not set correctly');
     }
@@ -33,12 +33,12 @@ class UserTest extends PHPUnit_Framework_TestCase
     {
         $user = new User();
 
-        $user->exchangeArray(array('id'     => 123,
+        $user->exchangeArray(array('user_id'     => 123,
                                    'username' => 'NomUtilisateur',
                                    'email'  => 'email@adresse.com'));
         $user->exchangeArray(array());
 
-        $this->assertNull($user->id, '"id" should have defaulted to null');
+        $this->assertNull($user->user_id, '"user_id" should have defaulted to null');
         $this->assertNull($user->username, '"username" should have defaulted to null');
         $this->assertNull($user->email, '"email" should have defaulted to null');
     }

@@ -26,7 +26,7 @@ class UserTableTest extends PHPUnit_Framework_TestCase
     public function testCanRetrieveAnUserByItsId()
     {
         $user = new User();
-        $user->exchangeArray(array('id'     => 123,
+        $user->exchangeArray(array('user_id'     => 123,
             'username' => 'NomUtilisateur',
             'email'  => 'email@adresse.com'));
 
@@ -37,7 +37,7 @@ class UserTableTest extends PHPUnit_Framework_TestCase
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
         $mockTableGateway->expects($this->once())
         ->method('select')
-        ->with(array('id' => 123))
+        ->with(array('user_id' => 123))
         ->will($this->returnValue($resultSet));
 
         $userTable = new UserTable($mockTableGateway);
@@ -50,7 +50,7 @@ class UserTableTest extends PHPUnit_Framework_TestCase
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('delete'), array(), '', false);
         $mockTableGateway->expects($this->once())
         ->method('delete')
-        ->with(array('id' => 123));
+        ->with(array('user_id' => 123));
 
         $userTable = new UserTable($mockTableGateway);
         $userTable->deleteUser(123);
@@ -73,7 +73,7 @@ class UserTableTest extends PHPUnit_Framework_TestCase
 
     public function testSaveUserWillUpdateExistingUsersIfTheyAlreadyHaveAnId()
     {
-        $userData = array('id' => 123, 'username' => 'NomUtilisateur', 'email' => 'email@adresse.com');
+        $userData = array('user_id' => 123, 'username' => 'NomUtilisateur', 'email' => 'email@adresse.com');
         $user     = new User();
         $user->exchangeArray($userData);
 
@@ -85,12 +85,12 @@ class UserTableTest extends PHPUnit_Framework_TestCase
            array('select', 'update'), array(), '', false);
         $mockTableGateway->expects($this->once())
         ->method('select')
-        ->with(array('id' => 123))
+        ->with(array('user_id' => 123))
         ->will($this->returnValue($resultSet));
         $mockTableGateway->expects($this->once())
         ->method('update')
         ->with(array('username' => 'NomUtilisateur', 'email' => 'email@adresse.com'),
-            array('id' => 123));
+            array('user_id' => 123));
 
         $userTable = new UserTable($mockTableGateway);
         $userTable->saveUser($user);
@@ -105,7 +105,7 @@ class UserTableTest extends PHPUnit_Framework_TestCase
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
         $mockTableGateway->expects($this->once())
         ->method('select')
-        ->with(array('id' => 123))
+        ->with(array('user_id' => 123))
         ->will($this->returnValue($resultSet));
 
         $userTable = new UserTable($mockTableGateway);

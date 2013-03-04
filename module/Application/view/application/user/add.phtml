@@ -9,7 +9,7 @@ $form->setAttribute('action', $this->url('application/default', array('controlle
 $form->prepare();
 
 echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id'));
+echo $this->formHidden($form->get('user_id'));
 echo $this->formRow($form->get('username'));
 echo $this->formRow($form->get('email'));
 echo $this->formSubmit($form->get('submit'));

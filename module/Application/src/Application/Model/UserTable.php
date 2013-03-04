@@ -18,13 +18,13 @@ class UserTable
         return $resultSet;
     }
 
-    public function getUser($id)
+    public function getUser($user_id)
     {
-        $id  = (int) $id;
-        $rowset = $this->tableGateway->select(array('id' => $id));
+        $user_id  = (int) $user_id;
+        $rowset = $this->tableGateway->select(array('user_id' => $user_id));
         $row = $rowset->current();
         if (!$row) {
-            throw new \Exception("Could not find row $id");
+            throw new \Exception("Could not find row $user_id");
         }
         return $row;
     }
@@ -36,20 +36,20 @@ class UserTable
             'email'  => $user->email,
         );
 
-        $id = (int)$user->id;
-        if ($id == 0) {
+        $user_id = (int)$user->user_id;
+        if ($user_id == 0) {
             $this->tableGateway->insert($data);
         } else {
-            if ($this->getUser($id)) {
-                $this->tableGateway->update($data, array('id' => $id));
+            if ($this->getUser($user_id)) {
+                $this->tableGateway->update($data, array('user_id' => $user_id));
             } else {
-                throw new \Exception('Form id does not exist');
+                throw new \Exception('Form user_id does not exist');
             }
         }
     }
 
-    public function deleteUser($id)
+    public function deleteUser($user_id)
     {
-        $this->tableGateway->delete(array('id' => $id));
+        $this->tableGateway->delete(array('user_id' => $user_id));
     }
 }

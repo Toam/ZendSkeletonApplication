@@ -11,13 +11,13 @@ $form->setAttribute('action', $this->url(
     array(
     	'controller'=> 'user',
         'action' => 'edit',
-        'id'     => $this->id,
+        'id'     => $this->user_id,
     )
 ));
 $form->prepare();
 
 echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id'));
+echo $this->formHidden($form->get('user_id'));
 echo $this->formRow($form->get('username'));
 echo $this->formRow($form->get('email'));
 echo $this->formSubmit($form->get('submit'));

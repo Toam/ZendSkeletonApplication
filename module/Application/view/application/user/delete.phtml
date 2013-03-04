@@ -12,12 +12,12 @@ $this->headTitle($title);
 $url = $this->url('application/default', array(
 	'controller'=> 'user',
     'action' => 'delete',
-    'id'     => $this->id,
+    'id'     => $user->user_id,
 ));
 ?>
 <form action="<?php echo $url; ?>" method="post">
 <div>
-    <input type="hidden" name="id" value="<?php echo (int) $user->id; ?>" />
+    <input type="hidden" name="user_id" value="<?php echo (int) $user->user_id; ?>" />   
     <input type="submit" name="del" value="Oui" />
     <input type="submit" name="del" value="Non" />
 </div>

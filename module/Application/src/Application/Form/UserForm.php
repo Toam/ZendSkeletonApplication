@@ -11,7 +11,7 @@ class UserForm extends Form
         parent::__construct('user');
         $this->setAttribute('method', 'post');
         $this->add(array(
-            'name' => 'id',
+            'name' => 'user_id',
             'attributes' => array(
                 'type'  => 'hidden',
             ),
