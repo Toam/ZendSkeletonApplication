@@ -1,6 +1,7 @@
 <?php echo $this->doctype(); ?>
-
-<html lang="en">
+<!--[if IE 8]>    <html class="no-js ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
@@ -9,43 +10,132 @@
 
     <!-- Le styles -->
     <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
-    ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
-    ->prependStylesheet($this->basePath() . '/css/style.css')
-    ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+    ->prependStylesheet($this->basePath() . '/css/wuxia-blue.css') ?>
 
     <!-- Scripts -->
-    <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-    ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-    ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
+    <?php echo $this->headScript()->prependFile($this->basePath() . '/js/bootstrap/bootstrap.js')
+                                  ->prependFile($this->basePath() . '/js/navigation.js')
+                                  ->prependFile($this->basePath() . '/js/libs/modernizr.js')
+                                  ->prependFile($this->basePath() . '/js/libs/modernizr.js') 
+                                  ->prependFile($this->basePath() . '/js/libs/jquery.js')?>
+    <script>
+    $(document).ready(function(){
 
+                // Navbar tooltips
+                $('.navbar [title]').tooltip({
+                    placement: 'bottom'
+                });
+                
+                // Content tooltips
+                $('[role=main] [title]').tooltip({
+                    placement: 'top'
+                });
+                
+                // Dropdowns
+                $('.dropdown-toggle').dropdown();
+                
+            });
+    </script>
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <header class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                        <li><a href="<?php echo $this->url('application/default', array('controller' => 'client')); ?>"><?php echo $this->translate('Clients') ?></a></li>
-                        <li><a href="<?php echo $this->url('application/default', array('controller' => 'user')); ?>"><?php echo $this->translate('Utilisateurs') ?></a></li>
+
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="awe-user"></span></button>
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="awe-chevron-down"></span></button>
+
+                <a class="brand" href="/">Global Bon</a>
+
+                <div class="nav-collapse">
+
+                    <!-- Main navigation -->
+                    <nav class="navigation">
+                        <ul class="nav active-arrows" role="navigation">
+                            <li class="active">
+                                <a href="index.html">
+                                    <span class="awe-home"></span>
+                                    Accueil
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <div><span class="awe-book"></span> Gestion des Bons</div>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="#"><span class="awe-list"></span> Liste des bons</a></li>
+                                    <li><a href="#"><span class="awe-pencil"></span> Ajouter un bon</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $this->url('application/default', array('controller' => 'client')); ?>">
+                                    <div><span class="awe-user"></span> Gestion des clients</div>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="<?php echo $this->url('application/default', array('controller' => 'client')); ?>"><span class="awe-list"></span> Liste des clients</a></li>
+                                    <li><a href="#"><span class="awe-pencil"></span> Ajouter un client</a></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </div><!--/.nav-collapse -->
+                    </nav>
+
+                    <!-- User navigation -->
+                    <nav class="user">
+                        <div class="user-info pull-right">
+                            <img src="http://placekitten.com/35/35" alt="User avatar">
+                            <div class="btn-group">
+                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <div><strong>John Pixel</strong>Administrateur</div>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href=""><span class="awe-cogs"></span> Préférences</a></li>
+                                    <li><a href="<?php echo $this->url('application/default', array('controller' => 'user')); ?>"><span class="awe-group"></span> Gestion des utilisteurs</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href=""><span class="awe-signout"></span> Déconnexion</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
                 </div>
             </div>
         </div>
-        <div class="container">
+    </header>
+    <!-- /Main navigation bar -->
+
+    <!-- Main content -->
+    <div class="container" role="main">
+
+        <!-- Breadcrumbs -->
+        <ul class="breadcrumb">
+            <li><a href="#"><span class="awe-home"></span> Accueil</a></li>
+            <li class="active">Page en cours</li>
+        </ul>
+        <!-- Breadcrumbs -->
+
+        <!-- Main data container -->
+        <div class="content">
             <?php echo $this->content; ?>
-            <hr>
-            <footer>
-                <p>&copy; 2013 Import/Export</p>
-            </footer>
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
-    </body>
-    </html>
+        </div>
+
+    </div>
+    <!-- /Main content -->
+
+    <!-- Main footer -->
+    <footer class="container">
+        <nav>
+            <ul>
+                <li>&copy; 2013. All rights reserved.</li>
+            </ul>
+        </nav>
+    </footer>
+    <!-- /Main footer -->
+
+    <?php echo $this->inlineScript() ?>
+</body>
+
+</html>
