@@ -2,7 +2,7 @@
 namespace ApplicationTest\Controller;
 
 use ApplicationTest\Bootstrap;
-use Application\Controller\ClientController;
+use Application\Controller\ExpediteurController;
 use Zend\Http\Request;
 use Zend\Http\Response;
 use Zend\Mvc\MvcEvent;
@@ -10,7 +10,7 @@ use Zend\Mvc\Router\RouteMatch;
 use Zend\Mvc\Router\Http\TreeRouteStack as HttpRouter;
 use PHPUnit_Framework_TestCase;
 
-class ClientControllerTest extends PHPUnit_Framework_TestCase
+class ExpediteurControllerTest extends PHPUnit_Framework_TestCase
 {
     protected $controller;
     protected $request;
@@ -21,7 +21,7 @@ class ClientControllerTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $serviceManager = Bootstrap::getServiceManager();
-        $this->controller = new ClientController();
+        $this->controller = new ExpediteurController();
         $this->request    = new Request();
         $this->routeMatch = new RouteMatch(array('controller' => 'index'));
         $this->event      = new MvcEvent();

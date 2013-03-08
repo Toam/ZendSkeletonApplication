@@ -1,11 +1,19 @@
 <?php
-$title = 'Ajouter un client';
+$title = 'Editer un expediteur';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
+
 <?php
 $form = $this->form;
-$form->setAttribute('action', $this->url('application/default', array('controller'=> 'client', 'action' => 'add')));
+$form->setAttribute('action', $this->url(
+    'application/default',
+    array(
+    	'controller'=> 'expediteur',
+        'action' => 'edit',
+        'id'     => $this->id,
+    )
+));
 $form->prepare();
 
 echo $this->form()->openTag($form);

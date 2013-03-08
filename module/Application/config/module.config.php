@@ -70,7 +70,7 @@ return array(
 'controllers' => array(
     'invokables' => array(
         'Application\Controller\Index' => 'Application\Controller\IndexController',
-        'Application\Controller\Client' => 'Application\Controller\ClientController',
+        'Application\Controller\Expediteur' => 'Application\Controller\ExpediteurController',
         'Application\Controller\User' => 'Application\Controller\UserController'
         ),
     ),

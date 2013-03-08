@@ -7,7 +7,7 @@ use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 
 
-class Client{
+class Expediteur{
 
 	public $id;
 	public $first_name;

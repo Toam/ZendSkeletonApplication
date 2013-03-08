@@ -1,14 +1,14 @@
 <?php
 namespace ApplicationTest\Model;
 
-use Application\Model\ClientTable;
-use Application\Model\Client;
+use Application\Model\ExpediteurTable;
+use Application\Model\Expediteur;
 use Zend\Db\ResultSet\ResultSet;
 use PHPUnit_Framework_TestCase;
 
-class ClientTableTest extends PHPUnit_Framework_TestCase
+class ExpediteurTableTest extends PHPUnit_Framework_TestCase
 {
-    public function testFetchAllReturnsAllClients()
+    public function testFetchAllReturnsAllExpediteurs()
     {
         $resultSet        = new ResultSet();
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
@@ -18,21 +18,21 @@ class ClientTableTest extends PHPUnit_Framework_TestCase
         ->with()
         ->will($this->returnValue($resultSet));
 
-        $clientTable = new ClientTable($mockTableGateway);
+        $expediteurTable = new ExpediteurTable($mockTableGateway);
 
-        $this->assertSame($resultSet, $clientTable->fetchAll());
+        $this->assertSame($resultSet, $expediteurTable->fetchAll());
     }
 
-    public function testCanRetrieveAnClientByItsId()
+    public function testCanRetrieveAnExpediteurByItsId()
     {
-        $client = new Client();
-        $client->exchangeArray(array('id'     => 123,
+        $expediteur = new Expediteur();
+        $expediteur->exchangeArray(array('id'     => 123,
             'first_name' => 'Prenom',
             'last_name'  => 'Nom'));
 
         $resultSet = new ResultSet();
-        $resultSet->setArrayObjectPrototype(new Client());
-        $resultSet->initialize(array($client));
+        $resultSet->setArrayObjectPrototype(new Expediteur());
+        $resultSet->initialize(array($expediteur));
 
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
         $mockTableGateway->expects($this->once())
@@ -40,46 +40,46 @@ class ClientTableTest extends PHPUnit_Framework_TestCase
         ->with(array('id' => 123))
         ->will($this->returnValue($resultSet));
 
-        $clientTable = new ClientTable($mockTableGateway);
+        $expediteurTable = new ExpediteurTable($mockTableGateway);
 
-        $this->assertSame($client, $clientTable->getClient(123));
+        $this->assertSame($expediteur, $expediteurTable->getExpediteur(123));
     }
 
-    public function testCanDeleteAnClientByItsId()
+    public function testCanDeleteAnExpediteurByItsId()
     {
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('delete'), array(), '', false);
         $mockTableGateway->expects($this->once())
         ->method('delete')
         ->with(array('id' => 123));
 
-        $clientTable = new ClientTable($mockTableGateway);
-        $clientTable->deleteClient(123);
+        $expediteurTable = new ExpediteurTable($mockTableGateway);
+        $expediteurTable->deleteExpediteur(123);
     }
 
-    public function testSaveClientWillInsertNewClientsIfTheyDontAlreadyHaveAnId()
+    public function testSaveExpediteurWillInsertNewExpediteursIfTheyDontAlreadyHaveAnId()
     {
-        $clientData = array('first_name' => 'Prenom', 'last_name' => 'Nom');
-        $client     = new Client();
-        $client->exchangeArray($clientData);
+        $expediteurData = array('first_name' => 'Prenom', 'last_name' => 'Nom');
+        $expediteur     = new Expediteur();
+        $expediteur->exchangeArray($expediteurData);
 
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('insert'), array(), '', false);
         $mockTableGateway->expects($this->once())
         ->method('insert')
-        ->with($clientData);
+        ->with($expediteurData);
 
-        $clientTable = new ClientTable($mockTableGateway);
-        $clientTable->saveClient($client);
+        $expediteurTable = new ExpediteurTable($mockTableGateway);
+        $expediteurTable->saveExpediteur($expediteur);
     }
 
-    public function testSaveClientWillUpdateExistingClientsIfTheyAlreadyHaveAnId()
+    public function testSaveExpediteurWillUpdateExistingExpediteursIfTheyAlreadyHaveAnId()
     {
-        $clientData = array('id' => 123, 'first_name' => 'Prenom', 'last_name' => 'Nom');
-        $client     = new Client();
-        $client->exchangeArray($clientData);
+        $expediteurData = array('id' => 123, 'first_name' => 'Prenom', 'last_name' => 'Nom');
+        $expediteur     = new Expediteur();
+        $expediteur->exchangeArray($expediteurData);
 
         $resultSet = new ResultSet();
-        $resultSet->setArrayObjectPrototype(new Client());
-        $resultSet->initialize(array($client));
+        $resultSet->setArrayObjectPrototype(new Expediteur());
+        $resultSet->initialize(array($expediteur));
 
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway',
            array('select', 'update'), array(), '', false);
@@ -92,14 +92,14 @@ class ClientTableTest extends PHPUnit_Framework_TestCase
         ->with(array('first_name' => 'Prenom', 'last_name' => 'Nom'),
             array('id' => 123));
 
-        $clientTable = new ClientTable($mockTableGateway);
-        $clientTable->saveClient($client);
+        $expediteurTable = new ExpediteurTable($mockTableGateway);
+        $expediteurTable->saveExpediteur($expediteur);
     }
 
-    public function testExceptionIsThrownWhenGettingNonexistentClient()
+    public function testExceptionIsThrownWhenGettingNonexistentExpediteur()
     {
         $resultSet = new ResultSet();
-        $resultSet->setArrayObjectPrototype(new Client());
+        $resultSet->setArrayObjectPrototype(new Expediteur());
         $resultSet->initialize(array());
 
         $mockTableGateway = $this->getMock('Zend\Db\TableGateway\TableGateway', array('select'), array(), '', false);
@@ -108,11 +108,11 @@ class ClientTableTest extends PHPUnit_Framework_TestCase
         ->with(array('id' => 123))
         ->will($this->returnValue($resultSet));
 
-        $clientTable = new ClientTable($mockTableGateway);
+        $expediteurTable = new ExpediteurTable($mockTableGateway);
 
         try
         {
-            $clientTable->getClient(123);
+            $expediteurTable->getExpediteur(123);
         }
         catch (\Exception $e)
         {

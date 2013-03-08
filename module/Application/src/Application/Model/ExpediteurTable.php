@@ -3,7 +3,7 @@ namespace Application\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 
-class ClientTable
+class ExpediteurTable
 {
     protected $tableGateway;
 
@@ -18,7 +18,7 @@ class ClientTable
         return $resultSet;
     }
 
-    public function getClient($id)
+    public function getExpediteur($id)
     {
         $id  = (int) $id;
         $rowset = $this->tableGateway->select(array('id' => $id));
@@ -29,18 +29,18 @@ class ClientTable
         return $row;
     }
 
-    public function saveClient(Client $client)
+    public function saveExpediteur(Expediteur $expediteur)
     {
         $data = array(
-            'first_name' => $client->first_name,
-            'last_name'  => $client->last_name,
+            'first_name' => $expediteur->first_name,
+            'last_name'  => $expediteur->last_name,
         );
 
-        $id = (int)$client->id;
+        $id = (int)$expediteur->id;
         if ($id == 0) {
             $this->tableGateway->insert($data);
         } else {
-            if ($this->getClient($id)) {
+            if ($this->getExpediteur($id)) {
                 $this->tableGateway->update($data, array('id' => $id));
             } else {
                 throw new \Exception('Form id does not exist');
@@ -48,7 +48,7 @@ class ClientTable
         }
     }
 
-    public function deleteClient($id)
+    public function deleteExpediteur($id)
     {
         $this->tableGateway->delete(array('id' => $id));
     }

@@ -70,13 +70,13 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $this->url('application/default', array('controller' => 'client')); ?>">
-                                    <div><span class="awe-user"></span> Gestion des clients</div>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $this->url('application/default', array('controller' => 'expediteur')); ?>">
+                                    <div><span class="awe-user"></span> Expediteurs</div>
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="<?php echo $this->url('application/default', array('controller' => 'client')); ?>"><span class="awe-list"></span> Liste des clients</a></li>
-                                    <li><a href="#"><span class="awe-pencil"></span> Ajouter un client</a></li>
+                                    <li><a href="<?php echo $this->url('application/default', array('controller' => 'expediteur')); ?>"><span class="awe-list"></span> Liste des expediteurs</a></li>
+                                    <li><a href="#"><span class="awe-pencil"></span> Ajouter un expediteur</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -95,7 +95,7 @@
                                     <li><a href=""><span class="awe-cogs"></span> Préférences</a></li>
                                     <li><a href="<?php echo $this->url('application/default', array('controller' => 'user')); ?>"><span class="awe-group"></span> Gestion des utilisteurs</a></li>
                                     <li class="divider"></li>
-                                    <li><a href=""><span class="awe-signout"></span> Déconnexion</a></li>
+                                    <li><a href="<?php echo $this->url('zfcuser/logout'); ?>"><span class="awe-signout"></span> Déconnexion</a></li>
                                 </ul>
                             </div>
                         </div>

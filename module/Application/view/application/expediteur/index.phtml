@@ -1,0 +1,28 @@
+<?php
+$title = 'Expediteurs';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('application/default', array('controller'=> 'expediteur', 'action'=>'add'));?>">Ajouter un expediteur</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Prénom</th>
+    <th>Nom</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($expediteurs as $expediteur) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($expediteur->first_name);?></td>
+    <td><?php echo $this->escapeHtml($expediteur->last_name);?></td>
+    <td>
+        <a href="<?php echo $this->url('application/default',
+            array('controller'=> 'expediteur', 'action'=>'edit', 'id' => $expediteur->id));?>">Edit</a>
+        <a href="<?php echo $this->url('application/default',
+            array('controller'=> 'expediteur', 'action'=>'delete', 'id' => $expediteur->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

@@ -9,8 +9,8 @@
 
 namespace Application;
 
-use Application\Model\Client;
-use Application\Model\ClientTable;
+use Application\Model\Expediteur;
+use Application\Model\ExpediteurTable;
 use Application\Model\User;
 use Application\Model\UserTable;
 
@@ -50,16 +50,16 @@ class Module
     {
         return array(
             'factories' => array(
-                'Application\Model\ClientTable' =>  function($sm) {
-                    $tableGateway = $sm->get('ClientTableGateway');
-                    $table = new ClientTable($tableGateway);
+                'Application\Model\ExpediteurTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ExpediteurTableGateway');
+                    $table = new ExpediteurTable($tableGateway);
                     return $table;
                 },
-                'ClientTableGateway' => function ($sm) {
+                'ExpediteurTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Client());
-                    return new TableGateway('client', $dbAdapter, null, $resultSetPrototype);
+                    $resultSetPrototype->setArrayObjectPrototype(new Expediteur());
+                    return new TableGateway('expediteur', $dbAdapter, null, $resultSetPrototype);
                 },
                 'Application\Model\UserTable' =>  function($sm) {
                     $tableGateway = $sm->get('UserTableGateway');
