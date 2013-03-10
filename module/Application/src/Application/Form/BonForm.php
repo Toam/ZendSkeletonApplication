@@ -10,6 +10,7 @@ class BonForm extends Form
         // we want to ignore the name passed
         parent::__construct('bon');
         $this->setAttribute('method', 'post');
+        $this->setAttribute('class', 'form-horizontal');
         $this->add(array(
             'name' => 'id',
             'attributes' => array(

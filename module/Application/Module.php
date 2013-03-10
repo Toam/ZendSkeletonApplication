@@ -88,4 +88,13 @@ class Module
                 ),
         );
     }
+
+    public function getViewHelperConfig() 
+    {
+        return array(
+            'invokables' => array(
+                'FormRow' => 'Application\Form\View\Helper\FormRow'
+            )
+        );
+    }
 }
