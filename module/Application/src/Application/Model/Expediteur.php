@@ -10,14 +10,26 @@ use Zend\InputFilter\InputFilterInterface;
 class Expediteur{
 
 	public $id;
-	public $first_name;
-	public $last_name;
+    public $name;
+    public $adress1;
+    public $adress2;
+    public $zipcode;
+    public $city;
+    public $country;
+    public $phone;
+    public $cell;
 	protected $inputFilter;
 
 	public function exchangeArray($data){
 		$this->id     = (isset($data['id'])) ? $data['id'] : null;
-		$this->first_name = (isset($data['first_name'])) ? $data['first_name'] : null;
-		$this->last_name  = (isset($data['last_name'])) ? $data['last_name'] : null;
+        $this->name = (isset($data['name'])) ? $data['name'] : null;
+        $this->adress1 = (isset($data['adress1'])) ? $data['adress1'] : null;
+        $this->adress2 = (isset($data['adress2'])) ? $data['adress2'] : null;
+        $this->zipcode = (isset($data['zipcode'])) ? $data['zipcode'] : null;
+        $this->city = (isset($data['city'])) ? $data['city'] : null;
+        $this->country = (isset($data['country'])) ? $data['country'] : null;
+        $this->phone = (isset($data['phone'])) ? $data['phone'] : null;
+        $this->cell = (isset($data['cell'])) ? $data['cell'] : null;
 	}
 
 	public function setInputFilter(InputFilterInterface $inputFilter)
@@ -40,7 +52,7 @@ class Expediteur{
             )));
 
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'first_name',
+                'name'     => 'name',
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),
@@ -59,8 +71,8 @@ class Expediteur{
             )));
 
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'last_name',
-                'required' => true,
+                'name'     => 'adress1',
+                'required' => false,
                 'filters'  => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
@@ -71,7 +83,121 @@ class Expediteur{
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min'      => 1,
-                            'max'      => 100,
+                            'max'      => 150,
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'adress2',
+                'required' => false,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 150,
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'zipcode',
+                'required' => false,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 8,
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'city',
+                'required' => false,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 50,
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'country',
+                'required' => false,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 50,
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'phone',
+                'required' => false,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 30,
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'cell',
+                'required' => false,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 30,
                         ),
                     ),
                 ),

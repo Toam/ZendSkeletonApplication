@@ -18,7 +18,13 @@ $form->prepare();
 
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id'));
-echo $this->formRow($form->get('first_name'));
-echo $this->formRow($form->get('last_name'));
+echo $this->formRow($form->get('name'));
+echo $this->formRow($form->get('adress1'));
+echo $this->formRow($form->get('adress2'));
+echo $this->formRow($form->get('zipcode'));
+echo $this->formRow($form->get('city'));
+echo $this->formRow($form->get('country'));
+echo $this->formRow($form->get('phone'));
+echo $this->formRow($form->get('cell'));
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();

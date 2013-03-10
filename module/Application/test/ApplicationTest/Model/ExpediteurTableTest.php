@@ -27,8 +27,14 @@ class ExpediteurTableTest extends PHPUnit_Framework_TestCase
     {
         $expediteur = new Expediteur();
         $expediteur->exchangeArray(array('id'     => 123,
-            'first_name' => 'Prenom',
-            'last_name'  => 'Nom'));
+                                            'name' => 'Prenom NOM',
+                                            'adress1' => 'Adresse',
+                                            'adress2' => 'Adresse suite',
+                                            'zipcode' => '12345',
+                                            'city' => 'Ville',
+                                            'country' => 'Pays',
+                                            'phone' => '0123456789',
+                                            'cell' => '0123456789'));
 
         $resultSet = new ResultSet();
         $resultSet->setArrayObjectPrototype(new Expediteur());
@@ -58,7 +64,14 @@ class ExpediteurTableTest extends PHPUnit_Framework_TestCase
 
     public function testSaveExpediteurWillInsertNewExpediteursIfTheyDontAlreadyHaveAnId()
     {
-        $expediteurData = array('first_name' => 'Prenom', 'last_name' => 'Nom');
+        $expediteurData = array('name' => 'Prenom NOM',
+                                'adress1' => 'Adresse',
+                                'adress2' => 'Adresse suite',
+                                'zipcode' => '12345',
+                                'city' => 'Ville',
+                                'country' => 'Pays',
+                                'phone' => '0123456789',
+                                'cell' => '0123456789');
         $expediteur     = new Expediteur();
         $expediteur->exchangeArray($expediteurData);
 
@@ -73,7 +86,15 @@ class ExpediteurTableTest extends PHPUnit_Framework_TestCase
 
     public function testSaveExpediteurWillUpdateExistingExpediteursIfTheyAlreadyHaveAnId()
     {
-        $expediteurData = array('id' => 123, 'first_name' => 'Prenom', 'last_name' => 'Nom');
+        $expediteurData = array('id' => 123,
+                                'name' => 'Prenom NOM',
+                                'adress1' => 'Adresse',
+                                'adress2' => 'Adresse suite',
+                                'zipcode' => '12345',
+                                'city' => 'Ville',
+                                'country' => 'Pays',
+                                'phone' => '0123456789',
+                                'cell' => '0123456789');
         $expediteur     = new Expediteur();
         $expediteur->exchangeArray($expediteurData);
 
@@ -89,7 +110,14 @@ class ExpediteurTableTest extends PHPUnit_Framework_TestCase
         ->will($this->returnValue($resultSet));
         $mockTableGateway->expects($this->once())
         ->method('update')
-        ->with(array('first_name' => 'Prenom', 'last_name' => 'Nom'),
+        ->with(array('name' => 'Prenom NOM',
+                        'adress1' => 'Adresse',
+                        'adress2' => 'Adresse suite',
+                        'zipcode' => '12345',
+                        'city' => 'Ville',
+                        'country' => 'Pays',
+                        'phone' => '0123456789',
+                        'cell' => '0123456789'),
             array('id' => 123));
 
         $expediteurTable = new ExpediteurTable($mockTableGateway);

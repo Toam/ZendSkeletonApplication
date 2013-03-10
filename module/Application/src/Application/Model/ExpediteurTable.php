@@ -32,8 +32,14 @@ class ExpediteurTable
     public function saveExpediteur(Expediteur $expediteur)
     {
         $data = array(
-            'first_name' => $expediteur->first_name,
-            'last_name'  => $expediteur->last_name,
+            'name' => $expediteur->name,
+            'adress1' => $expediteur->adress1,
+            'adress2' => $expediteur->adress2,
+            'zipcode' => $expediteur->zipcode,
+            'city' => $expediteur->city,
+            'country' => $expediteur->country,
+            'phone' => $expediteur->phone,
+            'cell' => $expediteur->cell
         );
 
         $id = (int)$expediteur->id;

@@ -41,9 +41,9 @@ class Module
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                    ),
                 ),
-            ),
-        );
+            );
     }
 
     public function getServiceConfig()
@@ -72,7 +72,7 @@ class Module
                     $resultSetPrototype->setArrayObjectPrototype(new User());
                     return new TableGateway('user', $dbAdapter, null, $resultSetPrototype);
                 },
-            ),
+                ),
         );
     }
 }

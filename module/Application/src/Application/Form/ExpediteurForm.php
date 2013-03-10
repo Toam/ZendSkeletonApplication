@@ -17,21 +17,75 @@ class ExpediteurForm extends Form
             ),
         ));
         $this->add(array(
-            'name' => 'first_name',
-            'attributes' => array(
-                'type'  => 'text',
-            ),
-            'options' => array(
-                'label' => 'Prénom',
-            ),
-        ));
-        $this->add(array(
-            'name' => 'last_name',
+            'name' => 'name',
             'attributes' => array(
                 'type'  => 'text',
             ),
             'options' => array(
                 'label' => 'Nom',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'adress1',
+            'attributes' => array(
+                'type'  => 'text',
+            ),
+            'options' => array(
+                'label' => 'Adresse',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'adress2',
+            'attributes' => array(
+                'type'  => 'text',
+            ),
+            'options' => array(
+                'label' => 'Adresse',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'zipcode',
+            'attributes' => array(
+                'type'  => 'text',
+            ),
+            'options' => array(
+                'label' => 'Code Postal',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'city',
+            'attributes' => array(
+                'type'  => 'text',
+            ),
+            'options' => array(
+                'label' => 'City',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'country',
+            'attributes' => array(
+                'type'  => 'text',
+            ),
+            'options' => array(
+                'label' => 'Pays',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'phone',
+            'attributes' => array(
+                'type'  => 'text',
+            ),
+            'options' => array(
+                'label' => 'Téléphone',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'cell',
+            'attributes' => array(
+                'type'  => 'text',
+            ),
+            'options' => array(
+                'label' => 'Portable',
             ),
         ));
         $this->add(array(
