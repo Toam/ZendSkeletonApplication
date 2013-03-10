@@ -11,6 +11,8 @@ namespace Application;
 
 use Application\Model\Expediteur;
 use Application\Model\ExpediteurTable;
+use Application\Model\Bon;
+use Application\Model\BonTable;
 use Application\Model\User;
 use Application\Model\UserTable;
 
@@ -60,6 +62,17 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Expediteur());
                     return new TableGateway('expediteur', $dbAdapter, null, $resultSetPrototype);
+                },
+                'Application\Model\BonTable' =>  function($sm) {
+                    $tableGateway = $sm->get('BonTableGateway');
+                    $table = new BonTable($tableGateway);
+                    return $table;
+                },
+                'BonTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Expediteur());
+                    return new TableGateway('bon', $dbAdapter, null, $resultSetPrototype);
                 },
                 'Application\Model\UserTable' =>  function($sm) {
                     $tableGateway = $sm->get('UserTableGateway');

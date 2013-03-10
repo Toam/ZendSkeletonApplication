@@ -54,19 +54,19 @@
                     <nav class="navigation">
                         <ul class="nav active-arrows" role="navigation">
                             <li class="active">
-                                <a href="index.html">
+                                <a href="/">
                                     <span class="awe-home"></span>
                                     Accueil
                                 </a>
                             </li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $this->url('application/default', array('controller' => 'bon')); ?>">
                                     <div><span class="awe-book"></span> Gestion des Bons</div>
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="#"><span class="awe-list"></span> Liste des bons</a></li>
-                                    <li><a href="#"><span class="awe-pencil"></span> Ajouter un bon</a></li>
+                                    <li><a href="<?php echo $this->url('application/default', array('controller' => 'bon')); ?>"><span class="awe-list"></span> Liste des bons</a></li>
+                                    <li><a href="<?php echo $this->url('application/default', array('controller' => 'bon', 'action' => 'add')); ?>"><span class="awe-pencil"></span> Ajouter un bon</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -76,7 +76,7 @@
                                 </a>
                                 <ul class="dropdown-menu pull-right">
                                     <li><a href="<?php echo $this->url('application/default', array('controller' => 'expediteur')); ?>"><span class="awe-list"></span> Liste des expediteurs</a></li>
-                                    <li><a href="#"><span class="awe-pencil"></span> Ajouter un expediteur</a></li>
+                                    <li><a href="<?php echo $this->url('application/default', array('controller' => 'expediteur', 'action' => 'add')); ?>"><span class="awe-pencil"></span> Ajouter un expediteur</a></li>
                                 </ul>
                             </li>
                         </ul>

@@ -1,0 +1,30 @@
+<?php
+$title = 'Bons';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('application/default', array('controller'=> 'bon', 'action'=>'add'));?>">Ajouter un bon</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>N°</th>
+    <th>Date</th>
+    <th>Mode</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($bons as $bon) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($bon->number);?></td>
+    <td><?php echo $this->escapeHtml($bon->date);?></td>
+    <td><?php echo $this->escapeHtml($bon->mode);?></td>
+    <td>
+        <a href="<?php echo $this->url('application/default',
+            array('controller'=> 'bon', 'action'=>'edit', 'id' => $bon->id));?>">Edit</a>
+        <a href="<?php echo $this->url('application/default',
+            array('controller'=> 'bon', 'action'=>'delete', 'id' => $bon->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

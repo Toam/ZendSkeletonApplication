@@ -55,6 +55,7 @@ return array(
                 array('controller' => 'zfcuser', 'roles' => array()),
                 array('controller' => 'Application\Controller\Index', 'roles' => array('guest', 'user')),
                 array('controller' => 'Application\Controller\Expediteur', 'roles' => array('user')),
+                array('controller' => 'Application\Controller\Bon', 'roles' => array('user')),
                 array('controller' => 'Application\Controller\User', 'roles' => array('admin')),
                 
             ),
