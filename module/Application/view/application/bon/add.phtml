@@ -10,10 +10,27 @@ $form->prepare();
 
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('id'));
-echo $this->formRow($form->get('id_expediteur'));
+
+echo '<div class="row-fluid">';
+echo '<article class="span6">';
+
+echo '<fieldset>';
+echo '<legend>Informations sur le bon :</legend>';
 echo $this->formRow($form->get('number'));
 echo $this->formRow($form->get('date'));
 echo $this->formRow($form->get('mode'));
+echo '</fieldset>';
+
+echo '<fieldset>';
+echo '<legend>Expéditeur :</legend>';
+echo $this->formRowExpediteur($form->get('id_expediteur'));
+echo '</fieldset>';
+
+echo '</article>';
+echo '<article class="span6">';
+
+echo '<fieldset>';
+echo '<legend>Destinataire :</legend>';
 echo $this->formRow($form->get('destinataire_name'));
 echo $this->formRow($form->get('destinataire_adress1'));
 echo $this->formRow($form->get('destinataire_adress2'));
@@ -21,9 +38,34 @@ echo $this->formRow($form->get('destinataire_zipcode'));
 echo $this->formRow($form->get('destinataire_city'));
 echo $this->formRow($form->get('destinataire_country'));
 echo $this->formRow($form->get('destinataire_phone'));
-echo $this->formRow($form->get('ligne1_quantity'));
-echo $this->formRow($form->get('ligne1_label'));
-echo $this->formRow($form->get('ligne1_size'));
-echo $this->formRow($form->get('ligne1_price'));
+echo '</fieldset>';
+
+echo '</article>';
+echo '</div>';
+
+echo '<fieldset>';
+echo '<legend>Contenu :</legend>';
+echo '<center><table>';
+echo '<th>Quantité</th><th>Description</th><th>Poids</th><th>Prix</th>';
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo $this->formRowContent($form->get('ligne1_quantity'), $form->get('ligne1_label'), $form->get('ligne1_size'), $form->get('ligne1_price'));
+echo '</table></center>';
+echo '</fieldset>';
+
+echo '<div class="form-actions">';
 echo $this->formSubmit($form->get('submit'));
+echo '</div>';
+
+
+
 echo $this->form()->closeTag();

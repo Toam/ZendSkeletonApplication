@@ -22,6 +22,9 @@ class BonForm extends Form
             'attributes' => array(
                 'type'  => 'text',
             ),
+            'options' => array(
+                'label' => 'Expéditeur',
+            ),
         ));
         $this->add(array(
             'name' => 'number',
@@ -143,6 +146,7 @@ class BonForm extends Form
                 'type'  => 'submit',
                 'value' => 'Valider',
                 'id' => 'submitbutton',
+                'class' => 'btn btn-wuxia btn-large btn-primary'
             ),
         ));
     }

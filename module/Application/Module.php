@@ -93,7 +93,9 @@ class Module
     {
         return array(
             'invokables' => array(
-                'FormRow' => 'Application\Form\View\Helper\FormRow'
+                'FormRow' => 'Application\Form\View\Helper\FormRow',
+                'FormRowExpediteur' => 'Application\Form\View\Helper\FormRowExpediteur',
+                'FormRowContent' => 'Application\Form\View\Helper\FormRowContent',
             )
         );
     }
